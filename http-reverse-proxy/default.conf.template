@@ -1,0 +1,12 @@
+server {
+    listen       80;
+    server_name  localhost;
+
+    location / {
+        proxy_pass ${PROTOCOL}://${HOST}:${PORT}${URL_PATH};
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Accept-Encoding "";
+    }
+
+}
